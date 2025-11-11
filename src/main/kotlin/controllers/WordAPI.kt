@@ -12,6 +12,7 @@ class WordAPI () {
         words.add(Word(2, "comer", "eat", "beginner", "verb", true))
         words.add(Word(3, "manzana", "apple", "beginner", "noun", true))
         words.add(Word(4, "fuerte", "strong", "intermediate", "adjective", true))
+        words.add(Word(5, "madera", "wood", "intermediate", "noun", true))
     }
 
     fun getWordsByLevel(level: String): List<Word> {
