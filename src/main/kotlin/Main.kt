@@ -3,9 +3,13 @@ package ie.setu
 import ie.setu.controllers.WordAPI
 import ie.setu.models.Word
 
+val wordAPI = WordAPI()
 
 
 fun main() {
+
+    wordAPI.loadWords()
+    runMenu(wordAPI)
 
 }
 
@@ -20,7 +24,7 @@ fun menu(): Int {
 }
 
 
-fun runMenu() {
+fun runMenu(wordAPI: WordAPI) {
 
     do {
         val option = menu()
@@ -40,6 +44,10 @@ fun runMenu() {
 
 fun beginnerQuiz() {
     println("you chose beginner")
+    val beginnerWords = wordAPI.getWordsByLevel("beginner")
+    for (word in beginnerWords) {
+        println(word.givenWord)
+    }
 }
 
 fun intermediateQuiz() {
