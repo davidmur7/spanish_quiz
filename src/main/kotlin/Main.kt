@@ -2,14 +2,15 @@ package ie.setu
 
 import ie.setu.controllers.WordAPI
 import ie.setu.models.Word
+import ie.setu.controllers.GameAPI
 
 val wordAPI = WordAPI()
-
+val gameAPI = GameAPI()
 
 fun main() {
 
     wordAPI.loadWords()
-    runMenu(wordAPI)
+    runMenu(wordAPI, gameAPI)
 
 }
 
@@ -24,7 +25,7 @@ fun menu(): Int {
 }
 
 
-fun runMenu(wordAPI: WordAPI) {
+fun runMenu(wordAPI: WordAPI, gameAPI: GameAPI) {
 
     do {
         val option = menu()
