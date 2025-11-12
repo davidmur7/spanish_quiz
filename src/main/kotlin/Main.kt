@@ -1,8 +1,7 @@
 package ie.setu
 
-import ie.setu.controllers.WordAPI
-import ie.setu.models.Word
 import ie.setu.controllers.GameAPI
+import ie.setu.controllers.WordAPI
 
 val wordAPI = WordAPI()
 val gameAPI = GameAPI()
@@ -17,9 +16,7 @@ fun main() {
 
 fun menu(): Int {
     println("    Spanish Quiz  ")
-    println("1. Start beginner game")
-    println("2. Start intermediate game")
-    println("3. Start advanced game")
+    println("1. Start game")
     println("0. Exit")
     return readlnOrNull()?.toIntOrNull() ?: -1
 }
@@ -30,9 +27,7 @@ fun runMenu(wordAPI: WordAPI, gameAPI: GameAPI) {
     do {
         val option = menu()
         when (option) {
-            1 -> beginnerQuiz()
-            2 ->intermediateQuiz()
-            3 -> advancedQuiz()
+            1 -> startQuiz(wordAPI, gameAPI)
             0 -> {
                 println("exiting")
                 return
@@ -43,18 +38,8 @@ fun runMenu(wordAPI: WordAPI, gameAPI: GameAPI) {
 }
 
 
-fun beginnerQuiz() {
-    println("you chose beginner")
-    val beginnerWords = wordAPI.getWordsByLevel("beginner")
-    for (word in beginnerWords) {
-        println(word.givenWord)
-    }
-}
+fun startQuiz(wordAPI: WordAPI, gameAPI: GameAPI) {
+    print("Enter your name: ")
+    val userName = readln()
 
-fun intermediateQuiz() {
-    println("you chose intermediate")
-}
-
-fun advancedQuiz() {
-    println("you chose advanced")
 }
