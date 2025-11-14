@@ -37,9 +37,33 @@ fun runMenu(wordAPI: WordAPI, gameAPI: GameAPI) {
     while (true)
 }
 
+val niveles  = listOf("beginner", "intermediate", "advanced") // levels
+val categorias = listOf("noun", "verb", "adjective") // categories
+
 
 fun startQuiz(wordAPI: WordAPI, gameAPI: GameAPI) {
     print("Enter your name: ")
     val userName = readln()
+
+    println("Choose level:")
+    for (i in niveles) {
+        print(i + " ")
+    }
+    println("\nEnter the level name: ")
+    val chosenLevel = readln()
+
+    println("Choose category: ")
+    for (i in categorias) {
+        print(i + " ")
+    }
+
+    println("\nEnter the category: ")
+    val chosenCategory = readln()
+
+    println("How many questions? ")
+    val numberOfWords = readlnOrNull()?.toIntOrNull()
+
+
+
 
 }
