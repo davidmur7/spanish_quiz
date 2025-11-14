@@ -90,8 +90,4 @@ fun startQuiz(wordAPI: WordAPI, gameAPI: GameAPI) {
     println("Level: $chosenLevel \t Category: $chosenCategory")
     println("Score: $score out of ${quizWords.size}")
 
-
-
-
-
 }
