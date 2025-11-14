@@ -6,7 +6,7 @@ import ie.setu.models.Game
 class GameAPI {
     private val games = ArrayList<Game>()
 
-    fun createGame(userName: String, level: Int, category: String, numberOfWords: Int): Game {
+    fun createGame(userName: String, level: String, category: String, numberOfWords: Int): Game {
         val newGame = Game(
             gameId = games.size + 1,
             userName = userName,
