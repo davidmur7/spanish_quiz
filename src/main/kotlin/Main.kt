@@ -60,8 +60,31 @@ fun startQuiz(wordAPI: WordAPI, gameAPI: GameAPI) {
     println("\nEnter the category: ")
     val chosenCategory = readln()
 
-    println("How many questions? ")
-    val numberOfWords = readlnOrNull()?.toIntOrNull()
+    println("How many words? ")
+    val numberOfWords = readlnOrNull()?.toIntOrNull() ?: 5
+
+    val game = gameAPI.createGame(userName, chosenLevel, chosenCategory, numberOfWords)
+
+    val palabras = wordAPI.getWordsByLevelAndCategory(chosenLevel, chosenCategory) //words
+
+    val quizWords = palabras.shuffled().take(numberOfWords)
+
+    var score = 0
+
+    for (word in quizWords) {
+        println("Translate '${word.givenWord}' to English:")
+
+        print("Your answer: ")
+        val answer = readlnOrNull()
+
+        if (answer.equals(word.translatedWord)) {
+            println("Correct!")
+            score++
+        } else {
+            println("Incorrect. Correct answer: ${word.translatedWord}")
+        }
+    }
+
 
 
 
