@@ -1,10 +1,12 @@
 package ie.setu
 
 import ie.setu.controllers.GameAPI
+import ie.setu.controllers.GameWordAPI
 import ie.setu.controllers.WordAPI
 
 val wordAPI = WordAPI()
 val gameAPI = GameAPI()
+val gameWord = GameWordAPI()
 
 fun main() {
 
