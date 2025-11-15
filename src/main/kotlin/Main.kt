@@ -7,6 +7,7 @@ import ie.setu.controllers.WordAPI
 val wordAPI = WordAPI()
 val gameAPI = GameAPI()
 val gameWord = GameWordAPI()
+val isRight = true
 
 fun main() {
 
@@ -14,7 +15,6 @@ fun main() {
     runMenu(wordAPI, gameAPI)
 
 }
-
 
 fun menu(): Int {
     println("    Spanish Quiz  ")
@@ -77,19 +77,29 @@ fun startQuiz(wordAPI: WordAPI, gameAPI: GameAPI) {
         println("Translate '${word.givenWord}' to English:")
 
         print("Your answer: ")
-        val answer = readlnOrNull()
+        val answer1 = readln()
 
-        if (answer.equals(word.translatedWord)) {
+        if (answer1.equals(word.translatedWord)) {
             println("Correct!")
             score++
+
         } else {
             println("Incorrect. Correct answer: ${word.translatedWord}")
+
         }
+        val isCorrect = answer1.equals(word.translatedWord)
+        gameWord.addWordToGame(
+            wordId = word.wordId,
+            gameId = game.gameId,
+            answer = answer1,
+            isCorrect = isCorrect
+        )
     }
 
     println("\nGame over! ${userName}")
     println("Name: ${userName}")
     println("Level: $chosenLevel \t Category: $chosenCategory")
     println("Score: $score out of ${quizWords.size}")
+    print(gameWord.gameWords)
 
 }

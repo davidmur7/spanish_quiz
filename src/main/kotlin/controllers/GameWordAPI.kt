@@ -6,7 +6,7 @@ import ie.setu.models.Game
 private var gameWordId = 100
 class GameWordAPI {
 
-    private val gameWords = mutableListOf<GameWord>()
+    val gameWords = mutableListOf<GameWord>()
 
     fun addWordToGame(wordId: Int, gameId: Int, answer: String, isCorrect: Boolean) {
         gameWords.add(
