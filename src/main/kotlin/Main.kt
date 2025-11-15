@@ -35,6 +35,11 @@ fun runMenu(wordAPI: WordAPI, gameAPI: GameAPI) {
                 println("exiting")
                 return
             }
+            2 -> {
+                print("Enter the Spanish word to search for: ")
+                val word = readln()
+                gameWord.wordStats(word)
+            }
         }
     }
     while (true)

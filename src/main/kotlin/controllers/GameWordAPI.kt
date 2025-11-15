@@ -24,7 +24,11 @@ class GameWordAPI {
         )
     }
     fun wordStats(givenWord: String) {
-
+        for (i in gameWords) {
+            if (i.givenWord.equals(givenWord)) {
+                print(i)
+            }
+        }
     }
 
 }
