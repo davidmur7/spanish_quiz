@@ -3,6 +3,9 @@ package ie.setu
 import ie.setu.controllers.GameAPI
 import ie.setu.controllers.GameWordAPI
 import ie.setu.controllers.WordAPI
+import ie.setu.utils.readIntNotNull
+import ie.setu.utils.readNextInt
+import ie.setu.utils.readNextLine
 
 val wordAPI = WordAPI()
 val gameAPI = GameAPI()
@@ -22,7 +25,7 @@ fun menu(): Int {
     println("2. Search word records")
     println("3. List words by level")
     println("0. Exit")
-    return readlnOrNull()?.toIntOrNull() ?: -1
+    return readNextInt("Choose option: ")
 }
 
 
@@ -37,15 +40,14 @@ fun runMenu(wordAPI: WordAPI, gameAPI: GameAPI) {
                 return
             }
             2 -> {
-                print("Enter the Spanish word to search for: ")
-                val word = readln()
+                val word = readNextLine("Enter the Spanish word to search for: ").trim()
                 gameWord.wordStats(word)
             }
             3 -> {
-                print("Enter level to list (beginner, intermediate, advanced): ")
-                val chosenLevel = readln()
+                val chosenLevel = readNextLine("Enter level to list (beginner, intermediate, advanced): ").trim()
                 println(wordAPI.listWordsByLevel(chosenLevel))
             }
+            else -> println("Invalid option entered: $option")
 
         }
     }
@@ -57,23 +59,20 @@ val categorias = listOf("noun", "verb", "adjective") // categories
 
 
 fun startQuiz(wordAPI: WordAPI, gameAPI: GameAPI) {
-    print("Enter your name: ")
-    val userName = readln()
+    val userName = readNextLine("Enter your username: ").trim()
 
-    println("Choose level:")
+
     for (i in niveles) {
         print(i + " ")
     }
-    println("\nEnter the level name: ")
-    val chosenLevel = readln()
+    var chosenLevel = readNextLine("\nChoose level: ").trim().lowercase()
 
-    println("Choose category: ")
+
     for (i in categorias) {
         print(i + " ")
     }
 
-    println("\nEnter the category: ")
-    val chosenCategory = readln()
+    var chosenCategory = readNextLine("\nEnter the category: ").trim().lowercase()
 
     println("How many words? ")
     val numberOfWords = readlnOrNull()?.toIntOrNull() ?: 5
