@@ -7,5 +7,4 @@ data class GameWord (
     val givenWord: String,
     val answer: String,
     val isCorrect: Boolean
-
 )

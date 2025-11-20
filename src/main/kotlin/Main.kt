@@ -66,6 +66,13 @@ fun startQuiz(wordAPI: WordAPI, gameAPI: GameAPI) {
         print(i + " ")
     }
     var chosenLevel = readNextLine("\nChoose level: ").trim().lowercase()
+    while (chosenLevel !in niveles) {
+        println("${chosenLevel} is not a valid option")
+        for (i in niveles) {
+            print(i + " ")
+        }
+        chosenLevel = readNextLine("\nChoose level: ").trim().lowercase()
+    }
 
 
     for (i in categorias) {
@@ -73,9 +80,17 @@ fun startQuiz(wordAPI: WordAPI, gameAPI: GameAPI) {
     }
 
     var chosenCategory = readNextLine("\nEnter the category: ").trim().lowercase()
+    while (chosenCategory !in categorias) {
+        println("${chosenCategory} is not a valid option")
+        for (i in categorias) {
+            print(i + " ")
+        }
+        chosenCategory = readNextLine("\nEnter the category: ").trim().lowercase()
+    }
 
-    println("How many words? ")
-    val numberOfWords = readlnOrNull()?.toIntOrNull() ?: 5
+    //println("How many words would you like to be quized on? ")
+    //val numberOfWords = readlnOrNull()?.toIntOrNull() ?: 5
+    val numberOfWords = readNextInt("How many words would you like to be quized on? ")
 
     val game = gameAPI.createGame(userName, chosenLevel, chosenCategory, numberOfWords)
 
@@ -111,9 +126,8 @@ fun startQuiz(wordAPI: WordAPI, gameAPI: GameAPI) {
     }
 
     println("\nGame over! ${userName}")
-    println("Name: ${userName}")
-    println("Level: $chosenLevel \t Category: $chosenCategory")
-    println("Score: $score out of ${quizWords.size}")
-    print(gameWord.gameWords)
+    println("Level: $chosenLevel \n Category: $chosenCategory")
+    println("Score: $score out of ${quizWords.size}\n")
+    //print(gameWord.gameWords)
 
 }
