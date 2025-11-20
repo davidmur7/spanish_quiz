@@ -20,6 +20,7 @@ fun menu(): Int {
     println("    Spanish Quiz  ")
     println("1. Start game")
     println("2. Search word records")
+    println("3. List words by level")
     println("0. Exit")
     return readlnOrNull()?.toIntOrNull() ?: -1
 }
@@ -40,6 +41,12 @@ fun runMenu(wordAPI: WordAPI, gameAPI: GameAPI) {
                 val word = readln()
                 gameWord.wordStats(word)
             }
+            3 -> {
+                print("Enter level to list (beginner, intermediate, advanced): ")
+                val chosenLevel = readln()
+                println(wordAPI.listWordsByLevel(chosenLevel))
+            }
+
         }
     }
     while (true)
