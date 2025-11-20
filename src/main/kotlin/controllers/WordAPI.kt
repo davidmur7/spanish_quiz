@@ -100,6 +100,19 @@ class WordAPI () {
         return words.filter { it.level == level && it.category == category }
     }
 
+    fun listWordsByLevel(level: String): String {
+        val matchedWords = words.filter { it.level.equals(level) }
+        if (matchedWords.isEmpty()) {
+            return "No words found for level: $level"
+        } else {
+            var listOfWords = ""
+            for (word in matchedWords) {
+                listOfWords += " ${word.givenWord} = (${word.translatedWord})\n"
+            }
+            return listOfWords
+        }
+    }
+
 
 
 
