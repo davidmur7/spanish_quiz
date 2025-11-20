@@ -24,11 +24,26 @@ class GameWordAPI {
         )
     }
     fun wordStats(givenWord: String) {
+        val wordRecords = mutableListOf<GameWord>()
+
+        val search = givenWord.trim().lowercase()
+
         for (i in gameWords) {
-            if (i.givenWord.equals(givenWord)) {
-                print(i)
+            val entryWord = i.givenWord.trim().lowercase()
+            if (entryWord.equals(search)) {
+                wordRecords.add(i)
             }
         }
+
+        if (wordRecords.isEmpty()) {
+            println("No records found for word: $givenWord")
+            return
+        }
+        println("Entries for word '$givenWord':")
+        for (record in wordRecords) {
+            println("Game ${record.gameId}: Answer='${record.answer}', Correct=${record.isCorrect}")
+        }
     }
+
 
 }
