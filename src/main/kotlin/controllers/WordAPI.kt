@@ -6,7 +6,7 @@ import kotlin.text.category
 
 class WordAPI () {
 
-    private val words = ArrayList<Word>()
+    val words = ArrayList<Word>()
 
     fun loadWords() {
         words.add(Word(1, "caminar", "to walk", "beginner", "verb", true))
@@ -99,6 +99,9 @@ class WordAPI () {
     fun getWordsByLevelAndCategory(level: String, category: String): List<Word> {
         return words.filter { it.level == level && it.category == category }
     }
+
+
+
 
 
 }

@@ -1,10 +1,13 @@
 package ie.setu
 
 import ie.setu.controllers.GameAPI
+import ie.setu.controllers.GameWordAPI
 import ie.setu.controllers.WordAPI
 
 val wordAPI = WordAPI()
 val gameAPI = GameAPI()
+val gameWord = GameWordAPI()
+
 
 fun main() {
 
@@ -13,10 +16,10 @@ fun main() {
 
 }
 
-
 fun menu(): Int {
     println("    Spanish Quiz  ")
     println("1. Start game")
+    println("2. Search word records")
     println("0. Exit")
     return readlnOrNull()?.toIntOrNull() ?: -1
 }
@@ -31,6 +34,11 @@ fun runMenu(wordAPI: WordAPI, gameAPI: GameAPI) {
             0 -> {
                 println("exiting")
                 return
+            }
+            2 -> {
+                print("Enter the Spanish word to search for: ")
+                val word = readln()
+                gameWord.wordStats(word)
             }
         }
     }
@@ -75,23 +83,31 @@ fun startQuiz(wordAPI: WordAPI, gameAPI: GameAPI) {
         println("Translate '${word.givenWord}' to English:")
 
         print("Your answer: ")
-        val answer = readlnOrNull()
+        val answer1 = readln()
 
-        if (answer.equals(word.translatedWord)) {
+        if (answer1.equals(word.translatedWord)) {
             println("Correct!")
             score++
+
         } else {
             println("Incorrect. Correct answer: ${word.translatedWord}")
+
         }
+        val givenWord = word.givenWord
+        val isCorrect = answer1.equals(word.translatedWord)
+        gameWord.addWordToGame(
+            wordId = word.wordId,
+            gameId = game.gameId,
+            givenWord = givenWord,
+            answer = answer1,
+            isCorrect = isCorrect
+        )
     }
 
     println("\nGame over! ${userName}")
     println("Name: ${userName}")
     println("Level: $chosenLevel \t Category: $chosenCategory")
     println("Score: $score out of ${quizWords.size}")
-
-
-
-
+    print(gameWord.gameWords)
 
 }
