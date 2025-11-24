@@ -37,4 +37,15 @@ class GameAPITest {
         assertEquals(category, game.chosenCategory)
         assertEquals(numberOfWords, game.numberOfWords)
     }
+    @Test
+    fun `createGame increments gameId after each instance`() {
+        val game1 = gameAPI!!.createGame("Salah", "beginner", "noun", 2)
+        val game2 = gameAPI!!.createGame("Parrott", "intermediate", "verb", 6)
+        val game3 = gameAPI!!.createGame("Pirlo", "advanced", "adjective", 1)
+
+        assertEquals(1, game1.gameId)
+        assertEquals(2, game2.gameId)
+        assertEquals(3, game3.gameId)
+    }
+
 }
