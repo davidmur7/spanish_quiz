@@ -42,4 +42,20 @@ class GameWordAPITest {
         assertEquals("fun", second.answer)
         assertTrue(second.isCorrect)
     }
+
+    @Test
+    fun `wordStats stores multiple attempts and counts correct and incorrect`() {
+        gameWordAPI!!.addWordToGame(wordId = 74, givenWord = "juicio", gameId = 1, answer = "judgement", isCorrect = true)
+        gameWordAPI!!.addWordToGame(wordId = 74, givenWord = "juicio", gameId = 2, answer = "judgement", isCorrect = false)
+        gameWordAPI!!.addWordToGame(wordId = 74, givenWord = "juicio", gameId = 3, answer = "judgement", isCorrect = true)
+
+        val records = gameWordAPI!!.gameWords.filter { it.givenWord.trim().equals("juicio", ignoreCase = true) }
+
+        assertEquals(3, records.size)
+        val correctCount = records.count { it.isCorrect }
+        val incorrectCount = records.count { !it.isCorrect }
+
+        assertEquals(2, correctCount)
+        assertEquals(1, incorrectCount)
+    }
 }
