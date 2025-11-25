@@ -6,7 +6,6 @@ import ie.setu.controllers.WordAPI
 import ie.setu.utils.readIntNotNull
 import ie.setu.utils.readNextInt
 import ie.setu.utils.readNextLine
-
 val wordAPI = WordAPI()
 val gameAPI = GameAPI()
 val gameWord = GameWordAPI()
@@ -40,11 +39,11 @@ fun runMenu(wordAPI: WordAPI, gameAPI: GameAPI) {
                 return
             }
             2 -> {
-                val word = readNextLine("Enter the Spanish word to search for: ").trim()
+                val word = readNextLine("Enter the Spanish word to search for: ").trim().lowercase()
                 gameWord.wordStats(word)
             }
             3 -> {
-                val chosenLevel = readNextLine("Enter level to list (beginner, intermediate, advanced): ").trim()
+                val chosenLevel = readNextLine("Enter level to list (beginner, intermediate, advanced): ").trim().lowercase()
                 println(wordAPI.listWordsByLevel(chosenLevel))
             }
             else -> println("Invalid option entered: $option")
@@ -88,9 +87,11 @@ fun startQuiz(wordAPI: WordAPI, gameAPI: GameAPI) {
         chosenCategory = readNextLine("\nEnter the category: ").trim().lowercase()
     }
 
-    //println("How many words would you like to be quized on? ")
-    //val numberOfWords = readlnOrNull()?.toIntOrNull() ?: 5
-    val numberOfWords = readNextInt("How many words would you like to be quized on? ")
+    var numberOfWords = readNextInt("How many words would you like to be quized on? ")
+    while (numberOfWords > 10) {
+        print("10 is the maximum number of words you can choose")
+        numberOfWords = readNextInt("\nHow many words would you like to be quized on? ")
+    }
 
     val game = gameAPI.createGame(userName, chosenLevel, chosenCategory, numberOfWords)
 
