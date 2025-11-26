@@ -8,7 +8,6 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 class WordAPITest {
-
     private var wordAPI: WordAPI? = null
 
     @BeforeEach
@@ -30,7 +29,6 @@ class WordAPITest {
 
     @Test
     fun `getWordsByLevelAndCategory returns matching words for advanced and verb`() {
-
         val level = "advanced"
         val category = "verb"
 
@@ -46,5 +44,4 @@ class WordAPITest {
         assertTrue(givenWords.contains("renunciar"))
         assertTrue(givenWords.contains("desplegar"))
     }
-
 }

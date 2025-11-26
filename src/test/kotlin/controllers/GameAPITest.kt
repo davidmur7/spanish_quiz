@@ -1,14 +1,14 @@
 package controllers
-import ie.setu.models.Game
+
 import ie.setu.controllers.GameAPI
+import ie.setu.models.Game
 import org.junit.jupiter.api.AfterEach
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
-
 class GameAPITest {
-
     private var gameAPI: GameAPI? = null
 
     @BeforeEach
@@ -37,6 +37,7 @@ class GameAPITest {
         assertEquals(category, game.chosenCategory)
         assertEquals(numberOfWords, game.numberOfWords)
     }
+
     @Test
     fun `createGame increments gameId after each instance`() {
         val game1 = gameAPI!!.createGame("Salah", "beginner", "noun", 2)
@@ -47,5 +48,4 @@ class GameAPITest {
         assertEquals(2, game2.gameId)
         assertEquals(3, game3.gameId)
     }
-
 }

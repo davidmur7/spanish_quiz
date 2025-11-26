@@ -30,4 +30,3 @@ fun readNextLine(prompt: String?): String {
     print(prompt)
     return readln()
 }
-
