@@ -1,4 +1,5 @@
 package ie.setu.models
+
 /**
  * Keeps a record of every word answered in every game
  *
@@ -10,11 +11,11 @@ package ie.setu.models
  * @property isCorrect true or false depending on wheter the user got it right
  */
 
-data class GameWord (
+data class GameWord(
     val gameWordId: Int,
     val gameId: Int,
     val wordId: Int,
     val givenWord: String,
     val answer: String,
-    val isCorrect: Boolean
+    val isCorrect: Boolean,
 )

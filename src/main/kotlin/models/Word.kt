@@ -1,4 +1,5 @@
 package ie.setu.models
+
 /**
  * Used for each word which can be quized on
  *
@@ -15,5 +16,5 @@ data class Word(
     val translatedWord: String,
     val level: String,
     val category: String,
-    val isIncluded: Boolean
+    val isIncluded: Boolean,
 )

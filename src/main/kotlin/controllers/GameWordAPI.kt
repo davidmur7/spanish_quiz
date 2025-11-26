@@ -1,17 +1,21 @@
 package ie.setu.controllers
 
 import ie.setu.models.GameWord
-import ie.setu.models.Word
-import ie.setu.models.Game
-import ie.setu.controllers.WordAPI
+
 val wordAPI = WordAPI()
 
 private var gameWordId = 100
-class GameWordAPI {
 
+class GameWordAPI {
     val gameWords = mutableListOf<GameWord>()
 
-    fun addWordToGame(wordId: Int, givenWord: String, gameId: Int, answer: String, isCorrect: Boolean) {
+    fun addWordToGame(
+        wordId: Int,
+        givenWord: String,
+        gameId: Int,
+        answer: String,
+        isCorrect: Boolean,
+    ) {
         gameWords.add(
             GameWord(
                 gameWordId = gameWordId++,
@@ -19,10 +23,11 @@ class GameWordAPI {
                 wordId = wordId,
                 answer = answer,
                 isCorrect = isCorrect,
-                givenWord = givenWord
-            )
+                givenWord = givenWord,
+            ),
         )
     }
+
     fun wordStats(givenWord: String) {
         val wordRecords = mutableListOf<GameWord>()
 
@@ -44,6 +49,4 @@ class GameWordAPI {
             println("Game ${record.gameId}: Answer='${record.answer}', Correct=${record.isCorrect}")
         }
     }
-
-
 }

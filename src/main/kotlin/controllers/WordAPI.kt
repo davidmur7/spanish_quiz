@@ -1,11 +1,8 @@
 package ie.setu.controllers
 import ie.setu.models.Word
-import jdk.jfr.Category
 import kotlin.text.category
 
-
-class WordAPI () {
-
+class WordAPI() {
     val words = ArrayList<Word>()
 
     fun loadWords() {
@@ -96,7 +93,10 @@ class WordAPI () {
         words.add(Word(85, "riguroso", "rigorous", "advanced", "adjective", true))
     }
 
-    fun getWordsByLevelAndCategory(level: String, category: String): List<Word> {
+    fun getWordsByLevelAndCategory(
+        level: String,
+        category: String,
+    ): List<Word> {
         return words.filter { it.level == level && it.category == category }
     }
 
@@ -112,9 +112,4 @@ class WordAPI () {
             return listOfWords
         }
     }
-
-
-
-
-
 }

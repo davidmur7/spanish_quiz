@@ -1,6 +1,5 @@
 package controllers
 
-import ie.setu.models.GameWord
 import ie.setu.controllers.GameWordAPI
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.*
@@ -8,7 +7,6 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 class GameWordAPITest {
-
     private var gameWordAPI: GameWordAPI? = null
 
     @BeforeEach

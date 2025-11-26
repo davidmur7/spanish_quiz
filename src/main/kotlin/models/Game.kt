@@ -1,4 +1,5 @@
 package ie.setu.models
+
 /**
  * Is used for every game round
  *
@@ -13,5 +14,5 @@ data class Game(
     val userName: String,
     val chosenLevel: String,
     val chosenCategory: String,
-    val numberOfWords: Int
+    val numberOfWords: Int,
 )
