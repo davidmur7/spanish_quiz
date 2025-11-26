@@ -6,7 +6,14 @@ val wordAPI = WordAPI()
 
 private var gameWordId = 100
 
+/**
+ * API to record every word tested
+ *
+ */
 class GameWordAPI {
+    /**
+     * list of all GameWord records added.
+     */
     val gameWords = mutableListOf<GameWord>()
 
     fun addWordToGame(
@@ -27,7 +34,11 @@ class GameWordAPI {
             ),
         )
     }
-
+    /**
+     * Print all attempts for the tested word
+     *
+     * @param givenWord the word to search for
+     */
     fun wordStats(givenWord: String) {
         val wordRecords = mutableListOf<GameWord>()
 

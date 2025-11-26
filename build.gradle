@@ -7,7 +7,7 @@ plugins {
 }
 
 group = 'ie.setu'
-version = '1.0-SNAPSHOT'
+version = '1.0'
 
 repositories {
     mavenCentral()
@@ -17,7 +17,7 @@ dependencies {
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
     implementation("com.thoughtworks.xstream:xstream:1.4.18")
     implementation("org.codehaus.jettison:jettison:1.4.1")
-    // For generating a Dokka Site from KDoc
+    // For generating a Dokka Site from KDoc...
     implementation "org.jetbrains.dokka:dokka-gradle-plugin:1.9.20"
 }
 
@@ -28,3 +28,25 @@ test {
 kotlin {
     jvmToolchain(21)
 }
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'MainKt'
+        )
+    }
+
+    // build a fat jar
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    from sourceSets.main.output
+
+    dependsOn configurations.runtimeClasspath
+
+    from {
+        configurations.runtimeClasspath
+                .findAll { it.name.endsWith('jar') }
+                .collect { zipTree(it) }
+    }
+}
+
