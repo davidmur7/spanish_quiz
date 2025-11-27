@@ -48,18 +48,17 @@ jobs:
         with:
           name: jar
           path: build/libs/*.jar
-
-    documentation: 
-            runs-on: ubuntu-latest
-            needs: test
-            steps:
-               # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it 
-            - uses: actions/checkout@v4
+  documentation: 
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+    
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it 
+      - uses: actions/checkout@v4
       
       # Runs the Gradle dokkaHtml task
-            - name: Dokka with Gradle
-            run: ./gradlew dokkaHtml
-      
+      - name: Dokka with Gradle
+        run: ./gradlew dokkaHtml
       
       # Builds a zip file with the KDoc generated website in it 
       - name: Archive KDoc Documentation
@@ -68,5 +67,5 @@ jobs:
           name: KDoc Documentation Site
           path: build/dokka/html
 
-    
-     
+
+    d
