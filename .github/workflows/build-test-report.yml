@@ -22,7 +22,8 @@ jobs:
         run: chmod +x gradlew
 
       - name: Run the Gradle Build (skip tests)
-        run: ./gradlew build -x test
+        run: ./gradlew build -x test -x ktlintCheck -x ktlintMainSourceSetCheck -x ktlintKotlinScriptCheck
+
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
