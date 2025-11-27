@@ -22,7 +22,8 @@ class GameWordAPI {
         gameId: Int,
         answer: String,
         isCorrect: Boolean,
-    ) {
+    )
+    {
         gameWords.add(
             GameWord(
                 gameWordId = gameWordId++,
