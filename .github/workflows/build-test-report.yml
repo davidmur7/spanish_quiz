@@ -17,12 +17,30 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
-
+         
       - name: Ensure gradlew is executable
         run: chmod +x gradlew
 
       - name: Run the Gradle Build (skip tests)
         run: ./gradlew build -x test -x ktlintCheck -x ktlintFormat --exclude-task ktlintMainSourceSetCheck --exclude-task ktlintTestSourceSetCheck --exclude-task runKtlintCheckOverKotlinScripts --exclude-task runKtlintCheckOverMainSourceSet --exclude-task runKtlintCheckOverTestSourceSet
+
+       # Runs the Gradle test task
+      - name: Test with Gradle
+        run: ./gradlew test --tests "*"
+
+              # Builds a zip file with JUnit test report in it    
+      - name: Archive test report
+        uses: actions/upload-artifact@v4.4.2
+        with:
+          name: Test report
+          path: build/reports/tests/test
+
+                # Builds a zip file with JUnit code covearge report in it    
+      - name: Archive coverage report
+        uses: actions/upload-artifact@v4.4.2
+        with:
+          name: Code Coverage report
+          path: build/reports/jacoco/test/html
 
 
       - name: Upload build artifact
