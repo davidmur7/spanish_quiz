@@ -22,7 +22,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Run the Gradle Build (skip tests)
-        run: ./gradlew build -x test -x ktlintCheck -x ktlintMainSourceSetCheck -x ktlintKotlinScriptCheck
+        run: ./gradlew build -x test -x ktlintCheck -x ktlintFormat --exclude-task ktlintMainSourceSetCheck --exclude-task ktlintTestSourceSetCheck --exclude-task runKtlintCheckOverKotlinScripts --exclude-task runKtlintCheckOverMainSourceSet --exclude-task runKtlintCheckOverTestSourceSet
 
 
       - name: Upload build artifact
