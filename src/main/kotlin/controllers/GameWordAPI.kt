@@ -58,7 +58,7 @@ class GameWordAPI {
         }
         println("Entries for word '$givenWord':")
         for (record in wordRecords) {
-            println("Game ${record.gameId}: Answer='${record.answer}', Correct=${record.isCorrect}")
+            println("Game ${record.gameId}:\n Answer='${record.answer}', Correct=${record.isCorrect}")
         }
     }
 }
