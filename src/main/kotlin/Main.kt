@@ -5,11 +5,23 @@ import ie.setu.controllers.GameWordAPI
 import ie.setu.controllers.WordAPI
 import ie.setu.utils.readNextInt
 import ie.setu.utils.readNextLine
-
+/**
+ * The API which stores all the words in the quiz
+ */
 val wordAPI = WordAPI()
+/**
+ * API used for creating and storing game sessions
+ */
 val gameAPI = GameAPI()
+/**
+ * API used for storing records of particular words
+ */
 val gameWord = GameWordAPI()
-
+/**
+ * Displays the main menu to the user and reads their option
+ *
+ * @return an int chosen by the user
+ */
 fun main() {
     wordAPI.loadWords()
     runMenu(wordAPI, gameAPI)
