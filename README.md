@@ -2,8 +2,11 @@
 
 ## Project Description
 
-This Spanish quiz app is a menu driven console app which allows the user test their Spanish abilities.
-The user can search for records of words they were previously quized on. 
+This Spanish quiz app is a menu driven console app which allows the user test their Spanish abilities. The user can
+- Start a quiz based on chosen difficulty level.
+- search for records of words they were previously quized on.
+- List words by certain level.
+
 
 ## Project Purpose
 
