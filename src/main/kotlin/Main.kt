@@ -5,24 +5,42 @@ import ie.setu.controllers.GameWordAPI
 import ie.setu.controllers.WordAPI
 import ie.setu.utils.readNextInt
 import ie.setu.utils.readNextLine
-
+/**
+ * The API which stores all the words in the quiz
+ */
 val wordAPI = WordAPI()
+/**
+ * API used for creating and storing game sessions
+ */
 val gameAPI = GameAPI()
+/**
+ * API used for storing records of particular words
+ */
 val gameWord = GameWordAPI()
-
+/**
+ * Displays the main menu to the user and reads their option
+ *
+ * @return an int chosen by the user
+ */
 fun main() {
     wordAPI.loadWords()
     runMenu(wordAPI, gameAPI)
 }
 
 fun menu(): Int {
-    println("    Spanish Quiz  ")
-    println("1. Start game")
-    println("2. Search word records")
-    println("3. List words by level")
-    println("0. Exit")
-    return readNextInt("Choose option: ")
+    print(
+        """
+        |    Spanish Quiz
+        |      1. Start game
+        |      2. Search word records
+        |      3. List words by level
+        |      0. Exit
+        |
+        """.trimMargin()
+    )
+    return readNextInt("Choose an option: ")
 }
+
 
 fun runMenu(
     wordAPI: WordAPI,
@@ -85,7 +103,7 @@ fun startQuiz(
     }
 
     var numberOfWords = readNextInt("How many words would you like to be quized on? ")
-    while (numberOfWords > 10) {
+    while (numberOfWords > 10 || numberOfWords < 1) {
         print("10 is the maximum number of words you can choose")
         numberOfWords = readNextInt("\nHow many words would you like to be quized on? ")
     }
@@ -122,7 +140,6 @@ fun startQuiz(
     }
 
     println("\nGame over! $userName")
-    println("Level: $chosenLevel \n Category: $chosenCategory")
+    println("Level: $chosenLevel \nCategory: $chosenCategory")
     println("Score: $score out of ${quizWords.size}\n")
-    // print(gameWord.gameWords)
 }
